@@ -1,6 +1,6 @@
-#include "SimpleMotorControl.h"
+#include "SimpleControl.h"
 
-SimpleMotorControl::SimpleMotorControl(uint8_t mSignalPin1, uint8_t mSignalPin2)
+SimpleControl::SimpleControl(uint8_t mSignalPin1, uint8_t mSignalPin2)
 {
 #undef PWM
 #define PWM (RESET)
@@ -11,7 +11,7 @@ SimpleMotorControl::SimpleMotorControl(uint8_t mSignalPin1, uint8_t mSignalPin2)
     pinMode(mSignalPin2_, OUTPUT);
 }
 
-SimpleMotorControl::SimpleMotorControl(uint8_t mSignalPin1, uint8_t mSignalPin2, uint8_t mPwmPin)
+SimpleControl::SimpleControl(uint8_t mSignalPin1, uint8_t mSignalPin2, uint8_t mPwmPin)
 {
 #undef PWM
 #define PWM (SET)
@@ -24,12 +24,12 @@ SimpleMotorControl::SimpleMotorControl(uint8_t mSignalPin1, uint8_t mSignalPin2,
     pinMode(mPwmPin_, OUTPUT);
 }
 
-SimpleMotorControl::~SimpleMotorControl()
+SimpleControl::~SimpleControl()
 {
     clear();
 }
 
-void SimpleMotorControl::motorOutput(uint8_t motorDir, int8_t pwmVal)
+void SimpleControl::motorOutput(uint8_t motorDir, int8_t pwmVal)
 {
     switch (motorDir)
     {
@@ -64,9 +64,9 @@ void SimpleMotorControl::motorOutput(uint8_t motorDir, int8_t pwmVal)
 }
 
 #if PWM
-void SimpleMotorControl::moveForward(int8_t pwmVal)
+void SimpleControl::moveForward(int8_t pwmVal)
 #else
-void SimpleMotorControl::moveForward()
+void SimpleControl::moveForward()
 #endif
 {
 #ifdef REVERSE_FORWARD_DIRECTION
@@ -85,9 +85,9 @@ void SimpleMotorControl::moveForward()
 }
 
 #if PWM
-void SimpleMotorControl::moveBackward(int8_t pwmVal)
+void SimpleControl::moveBackward(int8_t pwmVal)
 #else
-void SimpleMotorControl::moveBackward()
+void SimpleControl::moveBackward()
 #endif
 {
 #ifdef REVERSE_FORWARD_DIRECTION
@@ -105,13 +105,13 @@ void SimpleMotorControl::moveBackward()
 #endif
 }
 
-void SimpleMotorControl::stop()
+void SimpleControl::stop()
 {
     digitalWrite(mSignalPin1_, HIGH);
     digitalWrite(mSignalPin2_, HIGH);
 }
 
-void SimpleMotorControl::clear()
+void SimpleControl::clear()
 {
     digitalWrite(mSignalPin1_, LOW);
     digitalWrite(mSignalPin2_, LOW);

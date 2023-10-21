@@ -1,14 +1,14 @@
-#include "SimpleMotorControl.h"
+#include "SimpleControl.h"
 
 /**
    Refer the "configuration.h" file to make changes according to the system requirements.
 */
 
 /**
-   @brief: create an object of SimpleMotorControl
+   @brief: create an object of SimpleControl
 */
 
-SimpleMotorControl m1(8, 9, 10);
+SimpleControl m1(8, 9, 10);
 
 void setup()
 {
@@ -23,7 +23,7 @@ void setup()
   // --------------------------------------------------------
 
   {
-    SimpleMotorControl m2(6, 7);
+    SimpleControl m2(6, 7);
 
     m2.motorOutput(MOTION::FORWARD, 0);
     delay(3000);

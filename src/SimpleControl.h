@@ -1,5 +1,5 @@
-#ifndef SRC_MOTOR_DRIVER_H
-#define SRC_MOTOR_DRIVER_H
+#ifndef SRC_SIMPLE_CONTROL_H
+#define SRC_SIMPLE_CONTROL_H
 
 // std include
 #include <Arduino.h>
@@ -16,7 +16,7 @@ enum MOTION
     CLEAR
 };
 
-class SimpleMotorControl
+class SimpleControl
 {
 public:
 private:
@@ -36,10 +36,10 @@ private:
     void clear();
 
 public:
-    SimpleMotorControl(uint8_t mSignalPin1, uint8_t mSignalPin2);
-    SimpleMotorControl(uint8_t mSignalPin1, uint8_t mSignalPin2, uint8_t mPwmPin);
+    SimpleControl(uint8_t mSignalPin1, uint8_t mSignalPin2);
+    SimpleControl(uint8_t mSignalPin1, uint8_t mSignalPin2, uint8_t mPwmPin);
 
-    ~SimpleMotorControl();
+    ~SimpleControl();
 
     void motorOutput(uint8_t motorDir, int8_t pwmVal);
 };
